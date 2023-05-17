@@ -47,5 +47,21 @@ def print_dns_records(domain):
     except dns.exception.DNSException as e:
         print(f"DNS resolution failed: {str(e)}")
 
-domain_name = input("Enter the domain name without www: ")
-print_dns_records(domain_name)
+def run_again():
+    while True:
+        choice = input("Would you like to run the program again? (Y/N): ")
+        if choice.lower() == 'y':
+            return True
+        elif choice.lower() == 'n':
+            return False
+        else:
+            print("Invalid choice. Please enter 'Y' or 'N'.")
+
+while True:
+    domain_name = input("Enter the domain name without www: ")
+    print_dns_records(domain_name)
+    if not run_again():
+        break
+
+print("Program ended. Press Enter to exit.")
+input()
